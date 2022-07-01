@@ -18,16 +18,22 @@ public class SimpleTest {
     //var driver=CbJunitExtension.createWebDriver();
 
     //WebDriverRunner.setWebDriver(driver);
-    open("https://github.com");
-    $("abc").shouldBe(visible);
-
+    CbJunitExtension.step("Open Github home page", ()-> {
+      open("https://github.com");
+    });
+    CbJunitExtension.step("Validate page content", ()-> {
+      $("abc").shouldBe(visible);
+    });
   }
 
   @Test
   void workingTest() throws MalformedURLException {
+    CbJunitExtension.step("Open Github home page", ()-> {
       open("https://github.com");
-    $("div").shouldBe(visible);
-
+    });
+    CbJunitExtension.step("Validate page content", ()-> {
+      $("div").shouldBe(visible);
+    });
   }
 
   @Test
